@@ -1,0 +1,165 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="WebApplication5.main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Turizm Seyahat Rehberi</title>
+    <link href="/Style.css" rel="stylesheet" />
+   
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> 
+    <script type="text/javascript">
+
+        $("document").ready(function () {
+
+            $("header nav ul li.iller-wrap").mouseover(function () {
+
+                $("header nav ul li.iller-wrap .iller").css("display", "block")
+            })
+
+            $("header nav ul li.iller-wrap").mouseleave(function () {
+
+                $("header nav ul li.iller-wrap .iller").css("display", "none")
+            })
+        })
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        
+         <div id="wrapper">
+
+             <header>
+
+               <div class="logo">
+                   OBK
+               </div>    
+                  
+                <nav>
+                
+                <ul>
+
+                    <li>
+                        <a href="Anasayfa.aspx">Anasayfa</a>
+                    </li>
+                     <li class="iller-wrap">
+
+                          İller
+
+
+                         <div class="iller">
+                           <ul>
+                             
+                             <li> <a href="Antalya.aspx">Antalya</a></li><br />
+                             <li><a href="Istanbul.aspx"> İstanbul</a></li><br />
+                             <li><a href="Izmir.aspx">İzmir</a></li><br />
+                             <li><a href="Mugla.aspx">Muğla</a></li>
+                            
+                             
+                             
+                           </ul>
+                         </div>  
+
+                    </li>
+                     <li>
+                         <a href="Duyurular.aspx" >Duyurular</a>
+                    </li>
+                     <li>
+                         <a href="iletisim.aspx">İletişim</a>
+                    </li>
+
+                </ul>
+
+                </nav>
+
+                <div class="arama-wrap">
+                    <asp:TextBox ID="txtArama" CssClass="txtArama" runat ="server" placeholder="Arama" Height="25px" Width="173px" />    
+                    
+                    <asp:Button ID="btnArama" CssClass="btnArama" Text="Ara" runat ="server" OnClick="btnArama_Click" Height="45px" Width="62px" />
+                </div>
+             </header>
+
+   <div class="banner"> Turizm Seyehat Rehberi</div>
+
+    <div class="sol-taraf">
+
+        <div class="hizli-kayit">
+
+            <asp:Panel ID="pnlGiris" runat="server">
+
+
+            <div class="ust">
+                Kullanıcı Girişi
+            </div>
+            <div class="alt">
+                <div class="kullanici">
+                <span>Kullanıcı Adı</span>
+                <asp:TextBox ID="txtKullaniciAdi" CssClass="textbox" runat="server" />
+                </div>
+                <div class="sifre">
+                <span>Şifre</span>
+                <asp:TextBox ID="txtSifre" CssClass="textbox" runat="server" TextMode="Password" />
+                </div>
+             
+                <a href="Kaydol.aspx" class="btnKayit">KAYDET</a>
+                <asp:Button ID="btnGiris" CssClass="btnGiris" Text="GİRİŞ" runat="server" OnClick="btnGiris_Click" />
+                <asp:Label ID="lblSonuc" Text="" runat="server" />
+                </div>
+                 </asp:Panel>
+            <asp:Panel ID="pnlKullanici" runat="server" CssClass="pnlKullanici" Width="255px">
+                Hoşgeldiniz, <asp:Label ID="lblKullaniciAdi" Text="" runat="server" /> <br />
+                <asp:Button ID="btnCikis" Text="ÇIKIŞ" runat="server" OnClick="btnCikis_Click" CssClass="KullaniciCikisi" />
+            </asp:Panel>
+
+           </div>
+
+        <div class="duyurular">
+            <div class="ust">
+                Duyurular
+            </div>
+
+             <div class="alt">
+                 <asp:ListView ID="lstDuyuru" runat="server">
+                     <ItemTemplate>
+                  <div class="duyuru-wrap">
+                  <asp:Label ID="Label1"  Text='<%#Eval("Baslik") %>' runat="server" /><br />
+                  <asp:Label ID="Label2"  Text='<%#Eval("Duyuru") %>' runat="server" /><br />
+                  <asp:Label ID="Label3"  Text='<%#Eval("Tarih","{0:dd MMMM yyyy dddd, HH:mm}") %>' runat="server" />
+                </div> 
+                     </ItemTemplate>
+                 </asp:ListView>
+
+              
+             
+
+             </div>
+        </div>
+
+    </div>   
+    <div class="icerik">
+       <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+       </asp:ContentPlaceHolder>
+
+    </div>
+
+    <footer>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Bir Oğuz Burak Kavraz Tasarımıdır.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://twitter.com/@20numaraa" target=new><img src="img/twitter.png" border="0" style="height: 24px; width: 24px"></a>
+<a href="http://Instagram.com/oguzburakkavraz" target=new><img src="img/instagram.png" border="0" style="height: 24px; width: 24px"></a>
+<a href="http://facebook.com/obkavraz" target=new><img src="img/face.png" border="0" style="height: 24px; width: 24px"></a>
+
+    </footer>
+
+    </div>
+
+     
+    
+    </form>
+</body>
+</html>
